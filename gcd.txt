@@ -1,0 +1,27 @@
+// data should be given in hexa and output will be in r5 register in hexa
+
+mov.b #0x24,r4  //36 in hexa
+mov.b #0x3c,r5  //60 in hexa
+mov.b r4,r14    // data is copied to other registers to check with the remainders
+mov.b r5,r15
+cmp.b r4,r5     //comparison of the numbers to make r4 to be smaller
+jge next
+mov r4,r8
+mov r5,r4
+mov r8,r5      // [r4] will be smaller 
+next:sub.b r4,r5        //subtraction(division) in hexa
+cmp.b r14,r5  // checking the remainder is > the present divisor else it will be the requried answer
+jge next
+jz next
+cmp.b #0x00,r5  // checking the remainder is zero or not
+jz end1
+cmp.b #0x00,r5  //to make sure the remainder is > 0 and if not the present remainder is answer
+jl end1
+mov.b r5,r7     //exchange for next subtraction(division)
+mov.b r4,r5
+mov.b r7,r4
+mov.b r4,r14
+jmp next
+end1:mov r4,r5
+jmp $	//to terminate the program
+end
