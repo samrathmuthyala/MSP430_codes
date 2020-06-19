@@ -1,0 +1,13 @@
+        MOV.W #0x2000,R5
+        MOV.B #0x10,R4
+        MOV.W @R5,R6
+        MOV #0,R7
+        MOV #0,R8
+L1:     RLA R6
+        JC L2
+        INC R8
+        JMP L3
+L2:     INC R7
+L3:     DEC R4
+        JNZ L1
+        END
