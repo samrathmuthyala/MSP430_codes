@@ -1,0 +1,9 @@
+        
+        MOV.W #0x2000,R5
+        MOV.W #0x2010,R6
+        MOV.B #0x0A,R7
+L1:     MOV.W @R5+,0(R6)
+        INCD R6
+        DEC R7
+        JNZ L1
+        END
