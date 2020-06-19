@@ -1,0 +1,7 @@
+// flags affected by dadd instruction are N,Z,C
+clrc
+mov.b #0x67,r6
+mov.b #0x48,r7
+dadd.b r6,r7     //r7=r7+r6+cy and converts to decimal value
+jmp $
+end
