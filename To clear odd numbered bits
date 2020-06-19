@@ -1,0 +1,5 @@
+mov #0x8967,r5
+mov #0x5555,r4 //to clear odd bits 
+bic r4,r5	// clears  odd bits
+jmp $
+end
