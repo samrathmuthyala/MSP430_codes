@@ -1,0 +1,16 @@
+        MOV #4,R6
+L1:     MOV.W #0x2000,R4
+        MOV.W #0x2001,R5
+        MOV.B R6,R7
+L2:     CMP.B @R4,0(R5)
+        JGE L3
+        MOV.B @R4,R8
+        MOV.B @R5,0(R4)
+        MOV.B R8,0(R5)
+L3:     INC R4
+        INC R5
+        DEC R7
+        JNZ L2
+        DEC R6
+        JNZ L1
+        END
